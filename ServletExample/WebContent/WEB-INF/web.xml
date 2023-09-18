@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>ServletExample</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>Insert.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
@@ -85,5 +85,113 @@
   <servlet-mapping>
     <servlet-name>Welcome1</servlet-name>
     <url-pattern>/Welcome1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CookieServletExample</display-name>
+    <servlet-name>CookieServletExample</servlet-name>
+    <servlet-class>com.infinite.servlet.CookieServletExample</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookieServletExample</servlet-name>
+    <url-pattern>/CookieServletExample</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HttpSessionExample</display-name>
+    <servlet-name>HttpSessionExample</servlet-name>
+    <servlet-class>com.infinite.servlet.HttpSessionExample</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HttpSessionExample</servlet-name>
+    <url-pattern>/HttpSessionExample</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Register</display-name>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>com.infinite.register.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/Register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertExample</display-name>
+    <servlet-name>InsertExample</servlet-name>
+    <servlet-class>com.infinite.servlet.InsertExample</servlet-class>
+    <init-param>
+      <param-name>mysql</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlusername</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlpassword</param-name>
+      <param-value>mysql123@</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlurl</param-name>
+      <param-value>jdbc:mysql://localhost:3306/training</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertExample</servlet-name>
+    <url-pattern>/InsertExample</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteExample</display-name>
+    <servlet-name>DeleteExample</servlet-name>
+    <servlet-class>com.infinite.servlet.DeleteExample</servlet-class>
+    <init-param>
+      <param-name>mysql</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlusername</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlpassword</param-name>
+      <param-value>mysql123@</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlurl</param-name>
+      <param-value>jdbc:mysql://localhost:3306/training</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteExample</servlet-name>
+    <url-pattern>/DeleteExample</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateExample</display-name>
+    <servlet-name>UpdateExample</servlet-name>
+    <servlet-class>com.infinite.servlet.UpdateExample</servlet-class>
+      <init-param>
+      <param-name>mysql</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlusername</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlpassword</param-name>
+      <param-value>mysql123@</param-value>
+    </init-param>
+    <init-param>
+      <param-name>mysqlurl</param-name>
+      <param-value>jdbc:mysql://localhost:3306/training</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateExample</servlet-name>
+    <url-pattern>/UpdateExample</url-pattern>
   </servlet-mapping>
 </web-app>
