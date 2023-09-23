@@ -1,0 +1,787 @@
+>mysql> show tables;
++--------------------+
+| Tables_in_training |
++--------------------+
+| company            |
+| employee           |
+| imgtable           |
+| mobiletab          |
+| register           |
+| voter              |
++--------------------+
+6 rows in set (0.03 sec)
+
+mysql> show fields from mobiletab;
++--------------+----------+------+-----+---------+-------+
+| Field        | Type     | Null | Key | Default | Extra |
++--------------+----------+------+-----+---------+-------+
+| mobilename   | char(50) | YES  |     | NULL    |       |
+| mobilenumber | bigint   | YES  |     | NULL    |       |
++--------------+----------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into mobiletab values("iphone",7981279265);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from mobiletab;
++------------+--------------+
+| mobilename | mobilenumber |
++------------+--------------+
+| iphone     |   7981279265 |
++------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select mobilename.mobilenumber from mobiletab;
+ERROR 1054 (42S22): Unknown column 'mobilename.mobilenumber' in 'field list'
+mysql> select mobilename,mobilenumber from mobiletab;
++------------+--------------+
+| mobilename | mobilenumber |
++------------+--------------+
+| iphone     |   7981279265 |
++------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> insert into mobiletab values('&mobilename',&mobilenumber);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '&mobilenumber)' at line 1
+mysql> insert into mobiletab values('Iqoo',0000000001);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select mobilename,mobilenumber from mobiletab;
++------------+--------------+
+| mobilename | mobilenumber |
++------------+--------------+
+| iphone     |   7981279265 |
+| Iqoo       |            1 |
++------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into mobiletab values('Iqoo',00100000001);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select mobilename,mobilenumber from mobiletab;
++------------+--------------+
+| mobilename | mobilenumber |
++------------+--------------+
+| iphone     |   7981279265 |
+| Iqoo       |            1 |
+| Iqoo       |    100000001 |
++------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into mobiletab values('Iqoo',0000000000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select mobilename,mobilenumber from mobiletab;
++------------+--------------+
+| mobilename | mobilenumber |
++------------+--------------+
+| iphone     |   7981279265 |
+| Iqoo       |            1 |
+| Iqoo       |    100000001 |
+| Iqoo       |            0 |
++------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select mobilename as manufacturer,mobilenumber from mobiletab;
++--------------+--------------+
+| manufacturer | mobilenumber |
++--------------+--------------+
+| iphone       |   7981279265 |
+| Iqoo         |            1 |
+| Iqoo         |    100000001 |
+| Iqoo         |            0 |
++--------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select mobilename,mobilenumber as mobile from mobiletab;
++------------+------------+
+| mobilename | mobile     |
++------------+------------+
+| iphone     | 7981279265 |
+| Iqoo       |          1 |
+| Iqoo       |  100000001 |
+| Iqoo       |          0 |
++------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select mobilename as manufacturer,mobilenumber as mobile from mobiletab;
++--------------+------------+
+| manufacturer | mobile     |
++--------------+------------+
+| iphone       | 7981279265 |
+| Iqoo         |          1 |
+| Iqoo         |  100000001 |
+| Iqoo         |          0 |
++--------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(*) from mobiletab;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.03 sec)
+
+mysql> select count();*
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+    -> select count(*);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*
+select count(*)' at line 1
+mysql> select count(*);
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from mobiletab;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) as recordcount from mobiletab;
++-------------+
+| recordcount |
++-------------+
+|           4 |
++-------------+
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>>
+>
+>
+>
+>mysql> use training;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_training |
++--------------------+
+| company            |
+| employee           |
+| imgtable           |
+| mobiletab          |
+| register           |
+| voter              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table mobiletab rename mobileshop;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select mobilename from mobileshop;
++------------+
+| mobilename |
++------------+
+| iphone     |
+| Iqoo       |
+| Iqoo       |
+| Iqoo       |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> truncate table mobileshop;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select mobilename from mobileshop;
+Empty set (0.00 sec)
+
+mysql> select mobilename,mobilenumber from mobileshop;
+Empty set (0.00 sec)
+
+mysql> drop table mobileshop;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select mobilename,mobilenumber from mobileshop;
+ERROR 1146 (42S02): Table 'training.mobileshop' doesn't exist
+mysql> select * from user;
+ERROR 1146 (42S02): Table 'training.user' doesn't exist
+mysql> select * from mysql.user;
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+| Host      | User             | Select_priv | Insert_priv | Update_priv | Delete_priv | Create_priv | Drop_priv | Reload_priv | Shutdown_priv | Process_priv | File_priv | Grant_priv | References_priv | Index_priv | Alter_priv | Show_db_priv | Super_priv | Create_tmp_table_priv | Lock_tables_priv | Execute_priv | Repl_slave_priv | Repl_client_priv | Create_view_priv | Show_view_priv | Create_routine_priv | Alter_routine_priv | Create_user_priv | Event_priv | Trigger_priv | Create_tablespace_priv | ssl_type | ssl_cipher             | x509_issuer              | x509_subject               | max_questions | max_updates | max_connections | max_user_connections | plugin                | authentication_string                                                  | password_expired | password_last_changed | password_lifetime | account_locked | Create_role_priv | Drop_role_priv | Password_reuse_history | Password_reuse_time | Password_require_current | User_attributes |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+| localhost | mysql.infoschema | Y           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2023-09-04 15:57:47   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | mysql.session    | N           | N           | N           | N           | N           | N         | N           | Y             | N            | N         | N          | N               | N          | N          | N            | Y          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2023-09-04 15:57:47   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | mysql.sys        | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2023-09-04 15:57:47   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | root             | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$►Fm3lE♠d♀ah.I⌂↓gHvF▬jZs0r.AW85Z1W92IdvOj6VGUMHEF.HfWAtglNAzXQO6 | N                | 2023-09-04 15:57:52   |              NULL | N              | Y                | Y              |                   NULL |                NULL | NULL                     | NULL            |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select host,user from mysql.user;
++-----------+------------------+
+| host      | user             |
++-----------+------------------+
+| localhost | mysql.infoschema |
+| localhost | mysql.session    |
+| localhost | mysql.sys        |
+| localhost | root             |
++-----------+------------------+
+4 rows in set (0.00 sec)
+
+mysql> select host,user,password from mysql.user;
+ERROR 1054 (42S22): Unknown column 'password' in 'field list'
+mysql> select host,user,password from mysql.user;
+ERROR 1054 (42S22): Unknown column 'password' in 'field list'
+mysql> show fields from mysql.user;
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Field                    | Type                              | Null | Key | Default               | Extra |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Host                     | char(255)                         | NO   | PRI |                       |       |
+| User                     | char(32)                          | NO   | PRI |                       |       |
+| Select_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Insert_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Update_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Delete_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Reload_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Shutdown_priv            | enum('N','Y')                     | NO   |     | N                     |       |
+| Process_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| File_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Grant_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| References_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Index_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_db_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Super_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tmp_table_priv    | enum('N','Y')                     | NO   |     | N                     |       |
+| Lock_tables_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Execute_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_slave_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_client_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_view_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_view_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_routine_priv      | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_routine_priv       | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_user_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Event_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Trigger_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tablespace_priv   | enum('N','Y')                     | NO   |     | N                     |       |
+| ssl_type                 | enum('','ANY','X509','SPECIFIED') | NO   |     |                       |       |
+| ssl_cipher               | blob                              | NO   |     | NULL                  |       |
+| x509_issuer              | blob                              | NO   |     | NULL                  |       |
+| x509_subject             | blob                              | NO   |     | NULL                  |       |
+| max_questions            | int unsigned                      | NO   |     | 0                     |       |
+| max_updates              | int unsigned                      | NO   |     | 0                     |       |
+| max_connections          | int unsigned                      | NO   |     | 0                     |       |
+| max_user_connections     | int unsigned                      | NO   |     | 0                     |       |
+| plugin                   | char(64)                          | NO   |     | caching_sha2_password |       |
+| authentication_string    | text                              | YES  |     | NULL                  |       |
+| password_expired         | enum('N','Y')                     | NO   |     | N                     |       |
+| password_last_changed    | timestamp                         | YES  |     | NULL                  |       |
+| password_lifetime        | smallint unsigned                 | YES  |     | NULL                  |       |
+| account_locked           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_role_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_role_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Password_reuse_history   | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_reuse_time      | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_require_current | enum('N','Y')                     | YES  |     | NULL                  |       |
+| User_attributes          | json                              | YES  |     | NULL                  |       |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+51 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| first              |
+| information_schema |
+| kk                 |
+| mysql              |
+| performance_schema |
+| sys                |
+| training           |
++--------------------+
+7 rows in set (0.00 sec)
+>
+>
+>mysql> use training;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_training |
++--------------------+
+| company            |
+| employee           |
+| imgtable           |
+| mobiletab          |
+| register           |
+| voter              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table mobiletab rename mobileshop;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select mobilename from mobileshop;
++------------+
+| mobilename |
++------------+
+| iphone     |
+| Iqoo       |
+| Iqoo       |
+| Iqoo       |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> truncate table mobileshop;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select mobilename from mobileshop;
+Empty set (0.00 sec)
+
+mysql> select mobilename,mobilenumber from mobileshop;
+Empty set (0.00 sec)
+
+mysql> drop table mobileshop;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select mobilename,mobilenumber from mobileshop;
+ERROR 1146 (42S02): Table 'training.mobileshop' doesn't exist
+mysql> select * from user;
+ERROR 1146 (42S02): Table 'training.user' doesn't exist
+mysql> select * from mysql.user;
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+| Host      | User             | Select_priv | Insert_priv | Update_priv | Delete_priv | Create_priv | Drop_priv | Reload_priv | Shutdown_priv | Process_priv | File_priv | Grant_priv | References_priv | Index_priv | Alter_priv | Show_db_priv | Super_priv | Create_tmp_table_priv | Lock_tables_priv | Execute_priv | Repl_slave_priv | Repl_client_priv | Create_view_priv | Show_view_priv | Create_routine_priv | Alter_routine_priv | Create_user_priv | Event_priv | Trigger_priv | Create_tablespace_priv | ssl_type | ssl_cipher             | x509_issuer              | x509_subject               | max_questions | max_updates | max_connections | max_user_connections | plugin                | authentication_string                                                  | password_expired | password_last_changed | password_lifetime | account_locked | Create_role_priv | Drop_role_priv | Password_reuse_history | Password_reuse_time | Password_require_current | User_attributes |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+| localhost | mysql.infoschema | Y           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2023-09-04 15:57:47   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | mysql.session    | N           | N           | N           | N           | N           | N         | N           | Y             | N            | N         | N          | N               | N          | N          | N            | Y          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2023-09-04 15:57:47   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | mysql.sys        | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2023-09-04 15:57:47   |              NULL | Y              | N                | N              |                   NULL |                NULL | NULL                     | NULL            |
+| localhost | root             | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          | 0x                     | 0x                       | 0x                         |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$►Fm3lE♠d♀ah.I⌂↓gHvF▬jZs0r.AW85Z1W92IdvOj6VGUMHEF.HfWAtglNAzXQO6 | N                | 2023-09-04 15:57:52   |              NULL | N              | Y                | Y              |                   NULL |                NULL | NULL                     | NULL            |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------------------+--------------------------+----------------------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+--------------------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select host,user from mysql.user;
++-----------+------------------+
+| host      | user             |
++-----------+------------------+
+| localhost | mysql.infoschema |
+| localhost | mysql.session    |
+| localhost | mysql.sys        |
+| localhost | root             |
++-----------+------------------+
+4 rows in set (0.00 sec)
+
+mysql> select host,user,password from mysql.user;
+ERROR 1054 (42S22): Unknown column 'password' in 'field list'
+mysql> select host,user,password from mysql.user;
+ERROR 1054 (42S22): Unknown column 'password' in 'field list'
+mysql> show fields from mysql.user;
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Field                    | Type                              | Null | Key | Default               | Extra |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Host                     | char(255)                         | NO   | PRI |                       |       |
+| User                     | char(32)                          | NO   | PRI |                       |       |
+| Select_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Insert_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Update_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Delete_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Reload_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Shutdown_priv            | enum('N','Y')                     | NO   |     | N                     |       |
+| Process_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| File_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Grant_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| References_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Index_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_db_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Super_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tmp_table_priv    | enum('N','Y')                     | NO   |     | N                     |       |
+| Lock_tables_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Execute_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_slave_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_client_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_view_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_view_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_routine_priv      | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_routine_priv       | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_user_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Event_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Trigger_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tablespace_priv   | enum('N','Y')                     | NO   |     | N                     |       |
+| ssl_type                 | enum('','ANY','X509','SPECIFIED') | NO   |     |                       |       |
+| ssl_cipher               | blob                              | NO   |     | NULL                  |       |
+| x509_issuer              | blob                              | NO   |     | NULL                  |       |
+| x509_subject             | blob                              | NO   |     | NULL                  |       |
+| max_questions            | int unsigned                      | NO   |     | 0                     |       |
+| max_updates              | int unsigned                      | NO   |     | 0                     |       |
+| max_connections          | int unsigned                      | NO   |     | 0                     |       |
+| max_user_connections     | int unsigned                      | NO   |     | 0                     |       |
+| plugin                   | char(64)                          | NO   |     | caching_sha2_password |       |
+| authentication_string    | text                              | YES  |     | NULL                  |       |
+| password_expired         | enum('N','Y')                     | NO   |     | N                     |       |
+| password_last_changed    | timestamp                         | YES  |     | NULL                  |       |
+| password_lifetime        | smallint unsigned                 | YES  |     | NULL                  |       |
+| account_locked           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_role_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_role_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Password_reuse_history   | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_reuse_time      | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_require_current | enum('N','Y')                     | YES  |     | NULL                  |       |
+| User_attributes          | json                              | YES  |     | NULL                  |       |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+51 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| first              |
+| information_schema |
+| kk                 |
+| mysql              |
+| performance_schema |
+| sys                |
+| training           |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_training |
++--------------------+
+| company            |
+| employee           |
+| imgtable           |
+| register           |
+| voter              |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> show fields from employee;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| fullname       | char(20) | YES  |     | NULL    |       |
+| idnumber       | int      | YES  |     | NULL    |       |
+| departmentname | char(50) | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table employee(name char(50),deparment char(50),designation char(50));
+ERROR 1050 (42S01): Table 'employee' already exists
+mysql> create table employee1(name char(50),deparment char(50),designation char(50));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into employee1 values('prdp','cse','developer');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into employee1 values('bhanu','b.com','student');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into employee1 values('naren','cse','java developer');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select name,department,designation from employee1;
+ERROR 1054 (42S22): Unknown column 'department' in 'field list'
+mysql> select name,deparment,designation from employee1;
++-------+-----------+----------------+
+| name  | deparment | designation    |
++-------+-----------+----------------+
+| prdp  | cse       | developer      |
+| bhanu | b.com     | student        |
+| naren | cse       | java developer |
++-------+-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> update employee1 set deparment='finance' where name='bhanu';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select name,deparment,designation from employee1;
++-------+-----------+----------------+
+| name  | deparment | designation    |
++-------+-----------+----------------+
+| prdp  | cse       | developer      |
+| bhanu | finance   | student        |
+| naren | cse       | java developer |
++-------+-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> delete from employee where name = 'bhanu';
+ERROR 1054 (42S22): Unknown column 'name' in 'where clause'
+mysql> delete from employee1 where name = 'bhanu';
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select name,deparment,designation from employee1;
++-------+-----------+----------------+
+| name  | deparment | designation    |
++-------+-----------+----------------+
+| prdp  | cse       | developer      |
+| naren | cse       | java developer |
++-------+-----------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> truncate table employee1 where name = 'bhanu';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where name = 'bhanu'' at line 1
+mysql> create user prdp;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show users;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'users' at line 1
+mysql> show user;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'user' at line 1
+mysql> select host,user from mysql.user;
++-----------+------------------+
+| host      | user             |
++-----------+------------------+
+| %         | prdp             |
+| localhost | mysql.infoschema |
+| localhost | mysql.session    |
+| localhost | mysql.sys        |
+| localhost | root             |
++-----------+------------------+
+5 rows in set (0.00 sec)
+
+mysql> create table infinite(name char(20),salary integer NOT NULL CHECK(salary>0));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into infinite value('prdp',1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into infinite value('prdp',0);
+ERROR 3819 (HY000): Check constraint 'infinite_chk_1' is violated.
+mysql> select name,salary from employee1;
+ERROR 1054 (42S22): Unknown column 'salary' in 'field list'
+mysql> select name,salary from infinite;
++------+--------+
+| name | salary |
++------+--------+
+| prdp |      1 |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into infinite value('kanna',null);
+ERROR 1048 (23000): Column 'salary' cannot be null
+mysql> create table infinite(name char(20),salary integer null);
+ERROR 1050 (42S01): Table 'infinite' already exists
+mysql> create table infinite1(name char(20),salary integer null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into infinite1 value('kanna',null);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into infinite1 value('kanna',' ');
+ERROR 1366 (HY000): Incorrect integer value: ' ' for column 'salary' at row 1
+mysql> insert into infinite1 value('','2323');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select name,salary from infinite1;
++-------+--------+
+| name  | salary |
++-------+--------+
+| kanna |   NULL |
+|       |   2323 |
++-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into infinite1 (salary) value(2823');
+    '>
+    '> insert into infinite1 (salary) value(2823');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '');
+
+insert into infinite1 (salary) value(2823')' at line 1
+mysql> insert into infinite1 (salary) value(2823);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select name,salary from infinite1;
++-------+--------+
+| name  | salary |
++-------+--------+
+| kanna |   NULL |
+|       |   2323 |
+| NULL  |   2823 |
++-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create table projectresourceinfo(employee char(30),projectname char(30),emid integer,designation char(30),DOJ Date);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into projectresourceinfo values('pradeep','verizon',100,'developer',2023-09-21);
+ERROR 1292 (22007): Incorrect date value: '1993' for column 'DOJ' at row 1
+mysql> insert into projectresourceinfo values('pradeep','verizon',100,'developer','2023-09-21');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select name employee,projectname,emid,designation,DOJ from projectresourceinfo;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select  employee,projectname,emid,designation,DOJ from projectresourceinfo;
++----------+-------------+------+-------------+------------+
+| employee | projectname | emid | designation | DOJ        |
++----------+-------------+------+-------------+------------+
+| pradeep  | verizon     |  100 | developer   | 2023-09-21 |
++----------+-------------+------+-------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select  employee,projectname,emid,designation,DOJ+1 from projectresourceinfo;
++----------+-------------+------+-------------+----------+
+| employee | projectname | emid | designation | DOJ+1    |
++----------+-------------+------+-------------+----------+
+| pradeep  | verizon     |  100 | developer   | 20230922 |
++----------+-------------+------+-------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select  employee,projectname,emid,designation,DOJ-1 from projectresourceinfo;
++----------+-------------+------+-------------+----------+
+| employee | projectname | emid | designation | DOJ-1    |
++----------+-------------+------+-------------+----------+
+| pradeep  | verizon     |  100 | developer   | 20230920 |
++----------+-------------+------+-------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select  employee,projectname,emid,designation+1,DOJ from projectresourceinfo;
++----------+-------------+------+---------------+------------+
+| employee | projectname | emid | designation+1 | DOJ        |
++----------+-------------+------+---------------+------------+
+| pradeep  | verizon     |  100 |             1 | 2023-09-21 |
++----------+-------------+------+---------------+------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select  employee,projectname,emid,string(designation)+1,DOJ from projectresourceinfo;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(designation)+1,DOJ from projectresourceinfo' at line 1
+mysql> select  employee,projectname,emid,string(designation)+1,DOJ from projectresourceinfo;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(designation)+1,DOJ from projectresourceinfo' at line 1
+mysql> select  employee,projectname,emid,designation,DOJ*1 from projectresourceinfo;
++----------+-------------+------+-------------+----------+
+| employee | projectname | emid | designation | DOJ*1    |
++----------+-------------+------+-------------+----------+
+| pradeep  | verizon     |  100 | developer   | 20230921 |
++----------+-------------+------+-------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select  employee,projectname,emid,designation,DOJ*2 from projectresourceinfo;
++----------+-------------+------+-------------+----------+
+| employee | projectname | emid | designation | DOJ*2    |
++----------+-------------+------+-------------+----------+
+| pradeep  | verizon     |  100 | developer   | 40461842 |
++----------+-------------+------+-------------+----------+
+1 row in set (0.00 sec)
+
+mysql> create table dtable(cdat date,location char(50) default 'chennai');
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into dtable(cdat) values(curdate());
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select cdat,location from dtable;
++------------+----------+
+| cdat       | location |
++------------+----------+
+| 2023-09-21 | chennai  |
++------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|             21 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select dayofmonth(curdate());
++-----------------------+
+| dayofmonth(curdate()) |
++-----------------------+
+|                    21 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select dayofyear(curdate());
++----------------------+
+| dayofyear(curdate()) |
++----------------------+
+|                  264 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 17:44:49  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 17:46:18  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select @@session.TIME_ZONE;
++---------------------+
+| @@session.TIME_ZONE |
++---------------------+
+| SYSTEM              |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select @@session.TIME_ZONE curtime();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curtime()' at line 1
+mysql> select @@session.TIME_ZONE curtime();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curtime()' at line 1
+mysql> select @@session.TIME_ZONE;
++---------------------+
+| @@session.TIME_ZONE |
++---------------------+
+| SYSTEM              |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> set time_zone utc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'utc' at line 1
+mysql> select @@GLOBAL.time_zone, @@SESSION.time_zone;
++--------------------+---------------------+
+| @@GLOBAL.time_zone | @@SESSION.time_zone |
++--------------------+---------------------+
+| SYSTEM             | SYSTEM              |
++--------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> select @@SYSTEM.time_zone,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SYSTEM.time_zone,' at line 1
+mysql> select @@SYSTEM_time_zone,
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select @@SYSTEM_time_zone,;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select @@SYSTEM_time_zone;
++---------------------+
+| @@SYSTEM_time_zone  |
++---------------------+
+| India Standard Time |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select @@SYSTEM_time_zone;
++---------------------+
+| @@SYSTEM_time_zone  |
++---------------------+
+| India Standard Time |
++---------------------+
+1 row in set (0.00 sec)

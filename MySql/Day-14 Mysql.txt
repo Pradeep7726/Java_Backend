@@ -1,0 +1,358 @@
+
+mysql> use wallet;
+Database changed
+mysql> create table bank;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table Account(Id integer AUTO_INCREMENT PRIMARY KEY,NAME CHAR(50),NOT NULL,Balance integer default 0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT NULL,Balance integer default 0)' at line 1
+mysql> create table Account(Id integer AUTO_INCREMENT PRIMARY KEY,NAME char(50),NOT NULL,Balance integer default 0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT NULL,Balance integer default 0)' at line 1
+mysql> create table Account(Id integer AUTO_INCREMENT PRIMARY KEY,NAME char(50) NOT NULL,Balance integer default 0);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> shoe fields from Account;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'shoe fields from Account' at line 1
+mysql> shoe fields from account;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'shoe fields from account' at line 1
+mysql> show fields from account;
++---------+----------+------+-----+---------+----------------+
+| Field   | Type     | Null | Key | Default | Extra          |
++---------+----------+------+-----+---------+----------------+
+| Id      | int      | NO   | PRI | NULL    | auto_increment |
+| NAME    | char(50) | NO   |     | NULL    |                |
+| Balance | int      | YES  |     | 0       |                |
++---------+----------+------+-----+---------+----------------+
+3 rows in set (0.04 sec)
+
+mysql> show fields from account;
++---------+----------+------+-----+---------+----------------+
+| Field   | Type     | Null | Key | Default | Extra          |
++---------+----------+------+-----+---------+----------------+
+| Id      | int      | NO   | PRI | NULL    | auto_increment |
+| NAME    | char(50) | NO   |     | NULL    |                |
+| Balance | int      | YES  |     | 0       |                |
++---------+----------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from account;
+Empty set (0.03 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |       0 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |       0 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |       0 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |       0 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |     200 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |     204 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |     104 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |      94 |
++----+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from account;
++----+------+---------+
+| Id | NAME | Balance |
++----+------+---------+
+|  1 | yy   |      84 |
+|  2 | pp   |     100 |
++----+------+---------+
+2 rows in set (0.00 sec)
+
+mysql> use training;
+Database changed
+mysql> show fields from employeee;
+ERROR 1146 (42S02): Table 'training.employeee' doesn't exist
+mysql> show fields from employee;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| fullname       | char(20) | YES  |     | NULL    |       |
+| idnumber       | int      | YES  |     | NULL    |       |
+| departmentname | char(50) | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_training  |
++---------------------+
+| company             |
+| dtable              |
+| employee            |
+| employee1           |
+| imgtable            |
+| infinite            |
+| infinite1           |
+| projectresourceinfo |
+| register            |
+| voter               |
++---------------------+
+10 rows in set (0.04 sec)
+
+mysql> insert into infinite1 values('raj',2123);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from infinite1;
++-------+--------+
+| name  | salary |
++-------+--------+
+| kanna |   NULL |
+|       |   2323 |
+| NULL  |   2823 |
+| raj   |   2123 |
++-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> set autocommit=false;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into infinite1 values('raja',212223);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from infinite1;
++-------+--------+
+| name  | salary |
++-------+--------+
+| kanna |   NULL |
+|       |   2323 |
+| NULL  |   2823 |
+| raj   |   2123 |
+| raja  | 212223 |
++-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into infinite1 values('prpd',332123);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into infinite1 values('prpdasas',33);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from infinite1;
++----------+--------+
+| name     | salary |
++----------+--------+
+| kanna    |   NULL |
+|          |   2323 |
+| NULL     |   2823 |
+| raj      |   2123 |
+| raja     | 212223 |
+| prpd     | 332123 |
+| prpdasas |     33 |
++----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from infinite1;
++-------+--------+
+| name  | salary |
++-------+--------+
+| kanna |   NULL |
+|       |   2323 |
+| NULL  |   2823 |
+| raj   |   2123 |
++-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> set autocommit=true;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into infinite1 values('prpdasas',33);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into infinite1 values('prpd',332123);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into infinite1 values('raja',212223);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from infinite1;
++----------+--------+
+| name     | salary |
++----------+--------+
+| kanna    |   NULL |
+|          |   2323 |
+| NULL     |   2823 |
+| raj      |   2123 |
+| prpdasas |     33 |
+| prpd     | 332123 |
+| raja     | 212223 |
++----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from infinite1;
++----------+--------+
+| name     | salary |
++----------+--------+
+| kanna    |   NULL |
+|          |   2323 |
+| NULL     |   2823 |
+| raj      |   2123 |
+| prpdasas |     33 |
+| prpd     | 332123 |
+| raja     | 212223 |
++----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> create table laptop(laptopname char(30),origin char(30),price integer,pincode integer,laptopmodel varchar(55));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into laptop values('LG','japan',44832,4444,'ysfd76');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into laptop values('Lenovo','china,9872,8979,'ys56dff');
+    '> ;
+    '>
+    '> ;
+    '> insert into laptop values('Lenovo','china,9872,8979,'ys56dff');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ys56dff');
+;
+
+;
+insert into laptop values('Lenovo','china,9872,8979,'ys56dff')' at line 1
+mysql> insert into laptop values('Lenovo','china',9872,8979,'ys56dff');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into laptop values('apple','us',10111,84559,'vcnvr5');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from laptop;
++------------+--------+-------+---------+-------------+
+| laptopname | origin | price | pincode | laptopmodel |
++------------+--------+-------+---------+-------------+
+| LG         | japan  | 44832 |    4444 | ysfd76      |
+| Lenovo     | china  |  9872 |    8979 | ys56dff     |
+| apple      | us     | 10111 |   84559 | vcnvr5      |
++------------+--------+-------+---------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> create table productmodel(price integer,laptop model varchar(55));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'model varchar(55))' at line 1
+mysql> create table productmodel(price integer,laptopmodel varchar(55));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into productmodel values(7857,'hffhg;);
+    '> insert into productmodel values(7857,'hffhg');
+    '>
+    '> ;
+    '> insert into productmodel values(7857,'hffhg');
+    '> create table productmodel(price integer,laptopmodel varchar(55));
+    '>
+    '>
+    '> create table productmodel(price integer,laptopmodel varchar(55));
+    '> insert into laptop values('apple','us',10111,84559,'vcnvr5');
+    '> select * from laptop;
+    '> ;
+    '> insert into laptop values('apple','us',10111,84559,'vcnvr5');
+    '> insert into laptop values('apple','us',10111,84559,'vcnvr5');
+    '> j
+    '> ;
+    '> insert into laptop values('apple','us',10111,84559,'vcnvr5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'hffhg');
+
+;
+insert into productmodel values(7857,'hffhg');
+create table productm' at line 2
+mysql> insert into laptop values('apple','us',10111,84559,'vcnvr5');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into productmodel values(7857,'hffhg');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into productmodel values(4878,'544fd6');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into productmodel values(3893428,'it854');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into productmodel values(847843,'p8489o');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from productmodel;
++---------+-------------+
+| price   | laptopmodel |
++---------+-------------+
+|    7857 | hffhg       |
+|    4878 | 544fd6      |
+| 3893428 | it854       |
+|  847843 | p8489o      |
++---------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into laptop(price,laptopmodel) select price,laptopmodel from productmodel;
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from laptop;
++------------+--------+---------+---------+-------------+
+| laptopname | origin | price   | pincode | laptopmodel |
++------------+--------+---------+---------+-------------+
+| LG         | japan  |   44832 |    4444 | ysfd76      |
+| Lenovo     | china  |    9872 |    8979 | ys56dff     |
+| apple      | us     |   10111 |   84559 | vcnvr5      |
+| apple      | us     |   10111 |   84559 | vcnvr5      |
+| NULL       | NULL   |    7857 |    NULL | hffhg       |
+| NULL       | NULL   |    4878 |    NULL | 544fd6      |
+| NULL       | NULL   | 3893428 |    NULL | it854       |
+| NULL       | NULL   |  847843 |    NULL | p8489o      |
++------------+--------+---------+---------+-------------+
+8 rows in set (0.00 sec)
