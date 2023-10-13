@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<<< HEAD:PropertiesEx/.settings/org.eclipse.wst.common.component
+    <wb-module deploy-name="PropertiesEx">
+========
+    <wb-module deploy-name="SpringMVCTask1">
+>>>>>>>> f57e53b43e7f9f7cc895b0a07981543e6ecffbd9:SpringMVCTask1/.settings/org.eclipse.wst.common.component
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+<<<<<<<< HEAD:PropertiesEx/.settings/org.eclipse.wst.common.component
+        <property name="context-root" value="PropertiesEx"/>
+        <property name="java-output-path" value="/PropertiesEx/target/classes"/>
+========
+        <property name="context-root" value="SpringMVCTask1"/>
+        <property name="java-output-path" value="/SpringMVCTask1/target/classes"/>
+>>>>>>>> f57e53b43e7f9f7cc895b0a07981543e6ecffbd9:SpringMVCTask1/.settings/org.eclipse.wst.common.component
+    </wb-module>
+</project-modules>
