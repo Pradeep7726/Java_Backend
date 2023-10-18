@@ -1,0 +1,63 @@
+package com.infinite.daoimpl;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.infinite.daohelper.DaoHelper;
+import com.infinite.daointerface.IStudent;
+import com.infinite.pojo.Product;
+import com.infinite.pojo.Student;
+
+public class  ProductImpl {
+	static Session sessionObj;
+	static SessionFactory sessionFactoryObj;
+	private Configuration con;
+	private Transaction t;
+
+	// private Session sessionObj;
+	public void saveData(Product e) {
+		con = new Configuration().configure("hibernate.cfg.xml");
+		sessionFactoryObj = con.buildSessionFactory();
+		sessionObj = sessionFactoryObj.openSession();
+		t = sessionObj.beginTransaction();
+		sessionObj.save(e);
+		t.commit();
+
+	}
+	public void createRecord( Product e) {
+		// TODO Auto-generated method stub
+		// Getting Session Object From SessionFactory
+
+		try {
+			sessionObj = DaoHelper.buildSessionFactory().openSession();
+			// Getting Transaction Object From Session Object
+			sessionObj.beginTransaction();
+			Product p = (Product) sessionObj.get(Product.class,e.getId());
+			p.setStudentName(p.getStudentName());
+			p.setRollNumber(p.getRollNumber());
+			p.setCourse(p.getCourse());
+			
+			/*sessionObj.update(StudentName);
+			sessionObj.update(RollNumber);
+			sessionObj.update(Course);*/
+			sessionObj.update(st);
+			sessionObj.save(st);
+			sessionObj.getTransaction().commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				sessionObj.close();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+
+		}
+
+	}
+}

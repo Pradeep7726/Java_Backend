@@ -1,0 +1,13 @@
+
+Oct 16, 2023 13:12:21.12 NEW SESSION
+Oct 16, 2023 13:12:21.12 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 16, 2023 13:12:47.28 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 16, 2023 13:18:28.02 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 16, 2023 14:14:06.76 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 16, 2023 14:36:15.45 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 16, 2023 15:26:29.68 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 16, 2023 15:34:04.86 [10372:3036:1016/153404.859:ERROR:device_event_log_impl.cc(225)] [15:34:04.859] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+
+Oct 16, 2023 18:50:34.23 NEW SESSION
+Oct 16, 2023 18:50:34.23 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 16, 2023 19:03:41.04 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.

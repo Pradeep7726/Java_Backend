@@ -1,0 +1,10 @@
+package com.infinite.daointerface;
+
+
+
+import com.infinite.pojo.Student;
+
+public interface IStudent {
+	public void createRecord(String StudentName,String RollNumber,String Course);
+
+}

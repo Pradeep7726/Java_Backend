@@ -1,0 +1,78 @@
+package com.infinite.pojo;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "Product")
+public class Product {
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int productid;
+	@Column(name = "ProductName")
+	private String ProductName;
+	@Column(name = "Price")
+	private float price;
+	@Column(name = "Quantity")
+	private int quantity;
+	@Column(name = "Total")
+	private int total;
+	public Product() {
+		//super();
+	}
+	/*public Product(int productid, String productname, float price, int quantity, int total) {
+		super();
+		this.productid = productid;
+		ProductName = productname;
+		this.price = price;
+		this.quantity = quantity;
+		this.total = total;
+	}*/
+	public int getProductid() {
+		return productid;
+	}
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
+	public String getProductname() {
+		return ProductName;
+	}
+	public void setProductname(String productname) {
+		ProductName = productname;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public Object getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+	
+	
+	
+	
+	
+
+	

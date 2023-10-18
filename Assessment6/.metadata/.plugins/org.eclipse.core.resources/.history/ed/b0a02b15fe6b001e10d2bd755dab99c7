@@ -1,0 +1,51 @@
+<style>
+.top{
+width: 1200px;
+	height: 50px;
+	margin: auto;
+	background-color: Gray;
+	}
+	.Apply-coupon{
+	background-color: green;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	}
+	.Update-Cart, .Delete-Cart {
+	background-color: green;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	float:right;
+</style>
+<center><h1>Cart</h1></center>
+<hr>
+<div class="top">
+<h3>Got a gift card from loved one?</h3>
+<p align="right"><u>use it here!</u></p></div>
+<table style="width:100%; text-align:center"> 
+<tr> 
+<th>Product</th> 
+<th>price</th> 
+<th>qunatity</th>
+<th>Subtotal</th> 
+</tr> 
+<tr> 
+<td><img src="https://digest.myhq.in/wp-content/uploads/2023/04/Blog-Featured-image-19.jpg" width="150" height="150"></td> 
+<td>$0.00</td> 
+<td><input type="number" value="1" min="1"></td>
+<td>$0.00</td> 
+</tr> 
+<tr> 
+<td><img src="https://digest.myhq.in/wp-content/uploads/2023/04/Blog-Featured-image-19.jpg" width="150" height="150"></td> 
+<td>$34.00</td> 
+<td><input type="number" value="1" min="1"></td>
+<td>$136.00</td> 
+</tr> 
+</table> 
+<input type="text" name="coupon" placeholder="Coupon code"/>
+<button type="submit" class="Apply-coupon ">ApplyCoupon</button>
+<button type="submit" class="Update-Cart ">Update Cart</button>
+<button type="submit" class="Delete-Cart ">Delete Cart</button>

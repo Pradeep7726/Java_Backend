@@ -1,0 +1,6 @@
+com\infinite\controller\InsertController.class
+com\infinite\daoimpl\ProductImpl.class
+com\infinite\controller\DeleteController.class
+com\infinite\daointerface\IProduct.class
+com\infinite\daohelper\DaoHelper.class
+com\infinite\pojo\Product.class

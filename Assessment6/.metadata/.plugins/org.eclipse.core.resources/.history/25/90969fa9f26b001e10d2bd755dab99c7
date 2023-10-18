@@ -1,0 +1,14 @@
+package com.infinite.daointerface;
+
+public class IEmployee {
+	
+
+	import java.util.List;
+
+
+
+		public void createRecord(String StudentName,String RollNumber,String Course);
+
+	}
+
+}
