@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>string operations</title>
+</head>
+<body>
+<script>
+var sent = 'Welcome to infinite computer solutions.';
+document.write(sent.toUpperCase());
+document.write('<br>')
+var msg = '!      Welcome to infinite computer solutions       ';
+//The trim() method of String values removes whitespace from both ends of this string and returns a new string, without modifying the original string. Expected output: "   Hello world!   ";
+
+document.write(msg.trim());
+document.write('<br>')
+var sent = 'WELCOME TO INFINITE COMPUTER SOLUTIONS.';
+document.write(sent.toLowerCase()+"<br>");
+
+//The charAt() method of String values returns a new string consisting of the single UTF-16 code unit at the given index.
+
+var sentence = 'Welcome to infinite computer solutions';
+
+var index = 5;
+
+document.write(`The character at index ${index} is ${sentence.charAt(index)}`+"<br>");
+
+var sentence = 'Welcome to infinite computer solutions';
+document.write(sentence.endsWith('solutions')+"<br>");
+// Expected output: true
+
+var str2 = 'Is this a question?';
+
+document.write(str2.endsWith('question')+"<br>");
+
+var names = ['prdp', 'rosik', 'naren', 'nithin', 'sai','naren'];
+
+document.write(names.indexOf('rosik')+"<br>");
+// Expected output: 1
+
+// Start from index 3
+document.write(names.indexOf('naren', 3)+"<br>");
+// Expected output: 5
+
+document.write(names.indexOf('giraffe')+"<br>");
+// Expected output: -1
+
+var paragraph = 'Welcome to Infinite computer solutions';
+//var regex = /[A-Z]/g;
+var found = paragraph.match(/[A-Z]/g);
+document.write(found+"<br>");
+
+var p =
+  'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+
+document.write(p.replace('dog', 'monkey')+"<br>");
+// Expected output: "The quick brown fox jumps over the lazy monkey. If the dog reacted, was it really lazy?"
+
+var regex = /Dog/i;
+document.write(p.replace(regex, 'ferret')+"<br>");
+
+var paragraph ='The quick brown fox jumps over the lazy dog. If the dog barked, was it really lazy?';
+
+// Any character that is not a word character or whitespace
+var regex = /[^\w\s]/g;
+
+document.write(paragraph.search(regex)+"<br>");
+// Expected output: 43
+
+document.write(paragraph[paragraph.search(regex)]+"<br>");
+// Expected output: "."
+
+const stringObj = new String('foo');
+
+document.write(stringObj+"<br>");
+// Expected output: String { "foo" }
+
+document.write(stringObj.valueOf()+"<br>");
+//Expected output: "foo"
+</script>
+</body>
+</html>
